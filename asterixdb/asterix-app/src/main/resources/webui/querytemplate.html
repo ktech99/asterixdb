@@ -101,6 +101,7 @@ $(document).ready(function() {
             }
             var executedStatements = data.split('<!-- BEGIN -->');
             var executedStatementsWithResultsCount = 0;
+            document.getElementById("runner").innerHTML = "running";
             for (var i = 0; i < executedStatements.length; i++) {
                 if (executedStatements[i].toString().trim().length > 0) {
                     /* check how many statements have returned data*/
@@ -112,6 +113,7 @@ $(document).ready(function() {
             if (executedStatementsWithResultsCount <= 2) {
                 /* print statement results and duration*/
                 $('#output-message').html(data);
+                document.getElementById("runner").innerHTML = "not running";
             } else {
                 var resultsCount = 1;
                 /* need to create collapse button and div per statement*/
@@ -167,6 +169,7 @@ $(document).ready(function() {
                         */
                     }
                 }
+                document.getElementById("runner").innerHTML = "not running";
             }
 
             /* Handling Pretty JSON-query result */
@@ -282,6 +285,7 @@ $(document).ready(function() {
                         <button id="clear-query-button" class="btn">Clear Query</button>
                         <!-- <button id="checkboxes-off" class="btn">Clear All Options</button> -->
                         <button type="submit" id="run-btn" class="btn btn-custom-darken">Run</button>
+                        <p id="runner">Not running</p>
                     </div>
 
                     <div>
